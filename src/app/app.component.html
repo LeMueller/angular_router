@@ -1,7 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <a [routerLink]="['/']" >Home</a>
-<a [routerLink]="['/stock']">Stock Information</a>
+
+<!-- 路由传参 方法1： 在routerLink 的 tag 里加入 queryParams属性作为参数 -->
+<!-- <a [routerLink]="['/stock']" [queryParams]="{id:1}">Stock Information</a> -->
+
+<!-- 路由传参 方法2： 在routerLink 里直接加入 /:id 作为参数id -->
+<a [routerLink]="['/stock', 2]">Stock Information</a>
+
+
 <input type="button" value="stock information" (click)="toStockDetail()"/>
 
 <router-outlet></router-outlet>

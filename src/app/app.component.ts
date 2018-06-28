@@ -14,6 +14,7 @@ export class AppComponent {
   }
 
   toStockDetail() {
-     this.router.navigate(['/stock']);
+    // 路由传参 方法2： 在routerLink 里直接加入 /:id 作为参数id
+    this.router.navigate(['/stock', 5]);
   }
 }

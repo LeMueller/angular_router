@@ -8,7 +8,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class StockComponent implements OnInit {
 
-  private stockId: number;
+  private stock: Stock;
 
   private isPro: boolean;
 
@@ -22,8 +22,11 @@ export class StockComponent implements OnInit {
 
     
     // 参数订阅。同一组件内改变参数，也会被调用
-    this.routeInfo.params.subscribe((params: Params) => this.stockId = params["id"]);
+    // this.routeInfo.params.subscribe((params: Params) => this.stockId = params["id"]);
 
+    this.routeInfo.data.subscribe((data: {stock: Stock}) => {
+      this.stock = data.stock
+    });
   // 路由传参 方法3： 在路由配置时（app-routing）直接传入固定数据
     this.isPro = this.routeInfo.snapshot.data[0]["isPro"];
     
@@ -36,4 +39,13 @@ export class StockComponent implements OnInit {
     return this.focus;
   }
 
+}
+
+export class Stock {
+  constructor(
+    public id: number,
+    public name: string
+  ){
+
+  }
 }

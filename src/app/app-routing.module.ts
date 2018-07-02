@@ -8,6 +8,7 @@ import { SellerListComponent } from './seller-list/seller-list.component';
 import { ConsultComponent } from './consult/consult.component';
 import { PermissionGuard } from './guard/permission.guard';
 import { FocusGuard } from './guard/focus.guard';
+import { StockResolve } from './guard/stock.resolve';
 
 const routes: Routes = [
   // 重定向路由: full: 完全匹配， prefix: 只要开始字符匹配就可以
@@ -29,8 +30,12 @@ const routes: Routes = [
       {path: 'seller/:id', component: SellerListComponent}
     ],
     // 添加路由守卫，可以有多个路由守卫
-    canActivate: [PermissionGuard],
-    canDeactivate: [FocusGuard],
+    // canActivate: [PermissionGuard],
+    // canDeactivate: [FocusGuard],
+
+    resolve: {
+      stock: StockResolve
+    }
   },
 
   // ** lead to all url except '', and 'stock'. Should set at end of the Routes

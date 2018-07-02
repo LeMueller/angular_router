@@ -11,6 +11,7 @@ import { SellerListComponent } from './seller-list/seller-list.component';
 import { ConsultComponent } from './consult/consult.component';
 import { PermissionGuard } from './guard/permission.guard';
 import { FocusGuard } from './guard/focus.guard';
+import { StockResolve } from './guard/stock.resolve';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FocusGuard } from './guard/focus.guard';
   ],
   providers: [
     PermissionGuard,
-    FocusGuard
+    FocusGuard,
+    StockResolve
   ],
   bootstrap: [AppComponent]
 })

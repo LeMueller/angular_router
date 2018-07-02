@@ -1,15 +1,17 @@
-<p>
-  stock component!
-</p>
-
-<p>
-  Stock Id : {{stockId}}
-</p>
-
-<p>
-  isPro : {{isPro}}
-</p>
-
-<a [routerLink]="['./']">Buyer List</a>
-<a [routerLink]="['./seller', 100]">Seller List</a>
-<router-outlet></router-outlet>
+<div class="stock">
+  <p>
+    stock component!
+  </p>
+  
+  <p>
+    Stock Id : {{stockId}}
+  </p>
+  
+  <p>
+    isPro : {{isPro}}
+  </p>
+  
+  <a [routerLink]="['./']">Buyer List</a>
+  <a [routerLink]="['./seller', 100]">Seller List</a>
+  <router-outlet></router-outlet>
+</div>

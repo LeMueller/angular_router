@@ -1,6 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<a [routerLink]="['/']" >Home</a>
+<!-- [routerLink]="['/']" 不能为空，否则辅助路由无法显示，因为url里不再有(aux:consult) -->
+<!-- <a [routerLink]="['/']" >Home</a> -->
+<a [routerLink]="['/home']" >Home</a>
 
 <!-- 路由传参 方法1： 在routerLink 的 tag 里加入 queryParams属性作为参数 -->
 <!-- <a [routerLink]="['/stock']" [queryParams]="{id:1}">Stock Information</a> -->
@@ -8,7 +10,13 @@
 <!-- 路由传参 方法2： 在routerLink 里直接加入 /:id 作为参数id -->
 <a [routerLink]="['/stock', 2]">Stock Information</a>
 
+<!-- 辅助路由 -->
+<!-- primary 为主路由 -->
+<a [routerLink]="[{outlets: {primary: 'home', aux: 'consult'}}]">Start consult</a>
+<a [routerLink]="[{outlets: {aux: null}}]">Stop consult</a>
+
 
 <input type="button" value="stock information" (click)="toStockDetail()"/>
 
 <router-outlet></router-outlet>
+<router-outlet name="aux"></router-outlet>

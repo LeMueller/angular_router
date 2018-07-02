@@ -9,6 +9,8 @@ import { Code404Component } from './code404/code404.component';
 import { BuyerListComponent } from './buyer-list/buyer-list.component';
 import { SellerListComponent } from './seller-list/seller-list.component';
 import { ConsultComponent } from './consult/consult.component';
+import { PermissionGuard } from './guard/permission.guard';
+import { FocusGuard } from './guard/focus.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import { ConsultComponent } from './consult/consult.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    PermissionGuard,
+    FocusGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

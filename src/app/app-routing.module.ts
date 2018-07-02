@@ -6,6 +6,8 @@ import { Code404Component } from './code404/code404.component';
 import { BuyerListComponent } from './buyer-list/buyer-list.component';
 import { SellerListComponent } from './seller-list/seller-list.component';
 import { ConsultComponent } from './consult/consult.component';
+import { PermissionGuard } from './guard/permission.guard';
+import { FocusGuard } from './guard/focus.guard';
 
 const routes: Routes = [
   // 重定向路由: full: 完全匹配， prefix: 只要开始字符匹配就可以
@@ -23,9 +25,13 @@ const routes: Routes = [
 
   // 路由传参 方法3： 在路由配置时（app-routing）直接传入固定数据
   {path: 'stock/:id', component: StockComponent, data: [{isPro: true}], children: [
-    {path: '', component: BuyerListComponent},
-    {path: 'seller/:id', component: SellerListComponent}
-  ]},
+      {path: '', component: BuyerListComponent},
+      {path: 'seller/:id', component: SellerListComponent}
+    ],
+    // 添加路由守卫，可以有多个路由守卫
+    canActivate: [PermissionGuard],
+    canDeactivate: [FocusGuard],
+  },
 
   // ** lead to all url except '', and 'stock'. Should set at end of the Routes
   {path: '**', component: Code404Component}

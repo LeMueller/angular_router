@@ -12,6 +12,8 @@ export class StockComponent implements OnInit {
 
   private isPro: boolean;
 
+  private focus: boolean = false;
+
   constructor(private routeInfo: ActivatedRoute) { }
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class StockComponent implements OnInit {
     // 路由传参 方法2： 在routerLink 里直接加入 /:id 作为参数id。 若果是同一组件内改变参数，不会被重新init，也就不会执行这个命令。
     // 参数快照。snapshot 更节约资源
     // this.stockId = this.routeInfo.snapshot.params["id"];
+  }
+
+  isFocus() {
+    return this.focus;
   }
 
 }

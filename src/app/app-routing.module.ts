@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { StockComponent } from './stock/stock.component';
 import { Code404Component } from './code404/code404.component';
+import { BuyerListComponent } from './buyer-list/buyer-list.component';
+import { SellerListComponent } from './seller-list/seller-list.component';
 
 const routes: Routes = [
   // 重定向路由: full: 完全匹配， prefix: 只要开始字符匹配就可以
@@ -17,7 +19,10 @@ const routes: Routes = [
   // {path: 'stock/:id', component: StockComponent},
 
   // 路由传参 方法3： 在路由配置时（app-routing）直接传入固定数据
-  {path: 'stock/:id', component: StockComponent, data: [{isPro: true}]},
+  {path: 'stock/:id', component: StockComponent, data: [{isPro: true}], children: [
+    {path: '', component: BuyerListComponent},
+    {path: 'seller/:id', component: SellerListComponent}
+  ]},
 
   // ** lead to all url except '', and 'stock'. Should set at end of the Routes
   {path: '**', component: Code404Component}
